@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aristóteles y el realismo · Exposición de Filosofía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#03040c;--gold:#ffcf6b;--soft:#f6e6c4;--card:rgba(14,16,38,.88);--serif:'Playfair Display',Georgia,serif;--sans:'Poppins',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;height:100%;background:var(--bg);color:#fff;font-family:var(--sans);overflow:hidden}
+canvas{display:block;position:fixed;inset:0;width:100%;height:100%;touch-action:none}
+.glass{background:var(--card);border:1px solid rgba(255,207,107,.28);border-radius:22px;box-shadow:0 0 60px rgba(255,180,60,.2),inset 0 0 30px rgba(255,200,100,.06);backdrop-filter:blur(14px)}
+#intro{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 80% 15%,#2a2a5a 0,#0a0a1e 55%,#03040c 100%);z-index:10;transition:opacity 1.6s,visibility 1.6s}
+#intro.out{opacity:0;visibility:hidden}
+#intro .glass{width:min(88vw,400px);padding:38px 26px 30px;text-align:center}
+.tag{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+#intro h1{font-family:var(--serif);font-size:clamp(30px,8vw,40px);line-height:1.1;margin:0 0 12px;text-shadow:0 0 18px rgba(255,200,100,.45)}
+.pets{font-size:62px;margin:6px 0 10px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) scale(1.05)}}
+#intro p.sub{font-size:11px;line-height:1.7;letter-spacing:.08em;color:var(--soft);margin:0 0 22px}
+.btn{font:600 10px var(--sans);letter-spacing:.18em;text-transform:uppercase;border:0;cursor:pointer;color:#2a1c00;padding:13px 22px;border-radius:30px;background:linear-gradient(90deg,#ffcf6b,#ffe6a8);box-shadow:0 0 24px rgba(255,190,70,.5);transition:transform .2s}
+.btn:hover{transform:scale(1.05)}
+.btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,207,107,.4);box-shadow:none;padding:10px 16px}
+.btn:disabled{opacity:.3;cursor:default;transform:none}
+#nav{position:fixed;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:0 10px;z-index:5;opacity:0;transition:opacity 2s 2s}
+#nav.on{opacity:1}
+#nav button{font:600 10px var(--sans);letter-spacing:.08em;color:var(--soft);background:rgba(14,16,38,.75);border:1px solid rgba(255,207,107,.35);padding:9px 13px;border-radius:20px;cursor:pointer;backdrop-filter:blur(8px)}
+#nav button:hover{background:rgba(255,207,107,.2)}
+#hint{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;font-size:10px;letter-spacing:.18em;color:rgba(255,230,170,.6);pointer-events:none;z-index:5;opacity:0;transition:opacity 2s 2s}
+#hint.on{opacity:1}
+#modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:20;background:rgba(0,0,5,.6);opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s;padding:12px}
+#modal.on{opacity:1;visibility:visible}
+#modal .glass{width:min(94vw,600px);max-height:88vh;display:flex;flex-direction:column;padding:20px 20px 16px;transform:scale(.9) translateY(20px);transition:transform .5s cubic-bezier(.2,1.3,.4,1)}
+#modal.on .glass{transform:none}
+.head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.art{flex:none;width:62px;height:62px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:34px;background:radial-gradient(circle at 50% 60%,#4a3a10,#0c0c1c);box-shadow:inset 0 0 20px rgba(255,200,100,.3)}
+#mK{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 4px}
+#mT{font-family:var(--serif);font-size:21px;line-height:1.15;margin:0}
+#mB{overflow:auto;padding-right:6px;font-size:12.5px;line-height:1.65;color:#ecdfc4;-webkit-overflow-scrolling:touch}
+#mB h3{font-size:12px;letter-spacing:.06em;color:var(--gold);margin:14px 0 4px;text-transform:uppercase}
+#mB p{margin:0 0 8px}#mB ul{margin:0 0 8px;padding-left:18px}#mB li{margin-bottom:3px}
+#mB table{width:100%;border-collapse:collapse;font-size:11.5px;margin:6px 0 8px}
+#mB th,#mB td{border:1px solid rgba(255,207,107,.25);padding:6px 7px;text-align:center}
+#mB th{background:rgba(255,207,107,.14);color:var(--gold)}
+#mB td.m{color:#9fe0a8;font-weight:600}
+#mB .ej{background:rgba(255,207,107,.08);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin:8px 0}
+#mB .q{font-family:var(--serif);font-style:italic;font-size:14px;color:#fff;border-top:1px solid rgba(255,207,107,.25);margin-top:12px;padding-top:12px;text-align:center}
+#mB a{color:var(--gold)}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="intro"><div class="glass">
+<p class="tag">Exposición de Filosofía</p>
+<h1>Aristóteles y el realismo</h1>
+<div class="pets">🏛️</div>
+<p class="sub">La teoría de las virtudes · La ética de la felicidad · El justo medio y la toma de decisiones</p>
+<button class="btn" id="enter">Comenzar exposición</button>
+</div></div>
+<div id="hint">ARRASTRA PARA GIRAR · TOCA LOS SÍMBOLOS O USA LOS BOTONES</div>
+<div id="nav"></div>
+<div id="modal"><div class="glass">
+<div class="head"><div class="art" id="mA"></div><div><p id="mK"></p><h2 id="mT"></h2></div></div>
+<div id="mB"></div>
+<div class="foot"><button class="btn ghost" id="prev">← Anterior</button><button class="btn" id="close">Cerrar</button><button class="btn ghost" id="next">Siguiente →</button></div>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+/* ========= CONTENIDO DE LA EXPOSICIÓN ========= */
+var parts=[
+{e:'🏛️',nav:'Parte 1',k:'Parte 1 · Integrante 1',t:'Aristóteles y el realismo filosófico',b:
+'<h3>1. ¿Quién fue Aristóteles?</h3><p>Filósofo griego nacido en el año 384 a. C. en Estagira. Fue discípulo de Platón y se convirtió en uno de los pensadores más influyentes de la historia. Sus ideas contribuyeron al desarrollo de la filosofía, la ciencia, la política, la lógica y la ética.</p>'+
+'<h3>2. ¿Qué es el realismo aristotélico?</h3><p>Sostiene que la realidad existe independientemente de lo que pensemos sobre ella y que podemos conocerla mediante la experiencia y la razón.</p><div class="ej"><b>Ejemplo:</b> una planta existe aunque nadie la observe; podemos estudiarla examinando sus hojas, raíces, crecimiento y necesidades. No basta con imaginar: hay que observar, analizar y buscar las causas de los fenómenos.</div>'+
+'<h3>3. Relación con la ética</h3><p>No solo debemos conocer el mundo, sino también aprender a vivir bien. Por eso estudió las acciones humanas, las virtudes, la felicidad y las decisiones. Su pregunta: ¿cómo debemos vivir para alcanzar una vida buena y plena?</p>'+
+'<h3>Datos interesantes</h3><ul><li>Fue maestro de Alejandro Magno.</li><li>Fundó en Atenas una escuela filosófica llamada el Liceo.</li><li>Estudió animales, lógica, política, poesía y naturaleza.</li></ul>',
+q:'“Para comprender la realidad debemos observarla y razonar sobre ella; para vivir bien, debemos aprender a actuar correctamente.”'},
+{e:'📜',nav:'Parte 2',k:'Parte 2 · Integrante 2',t:'La teoría de las virtudes',b:
+'<h3>1. ¿Qué son las virtudes?</h3><p>Cualidades del carácter que nos ayudan a actuar correctamente y a desarrollar nuestras capacidades. Una persona virtuosa no es alguien que nunca se equivoca, sino alguien que aprende a reconocer lo correcto, reflexiona sobre sus acciones e intenta actuar responsablemente. Se desarrollan mediante la educación, la práctica y la repetición de buenas acciones.</p>'+
+'<h3>2. Tipos de virtudes</h3><p><b>A. Morales o éticas</b> (carácter, emociones y conducta):</p><ul><li><b>Justicia:</b> respetar los derechos y dar a cada persona lo que le corresponde.</li><li><b>Valentía:</b> enfrentar dificultades sin dejarse dominar por el miedo ni actuar imprudentemente.</li><li><b>Generosidad:</b> compartir y ayudar de manera adecuada.</li><li><b>Templanza:</b> regular los deseos y evitar los excesos.</li></ul><p><b>B. Intelectuales</b> (pensamiento y conocimiento):</p><ul><li><b>Sabiduría:</b> buscar y comprender conocimientos importantes.</li><li><b>Prudencia:</b> reflexionar antes de actuar y elegir medios adecuados.</li><li><b>Comprensión:</b> captar principios y razones que explican las cosas.</li></ul>'+
+'<h3>3. ¿Cómo se desarrollan?</h3><p>El carácter se forma mediante hábitos: las acciones que repetimos influyen en la persona en que nos convertimos.</p><div class="ej"><b>Ejemplo cotidiano:</b> si encontramos un objeto perdido en el salón, devolverlo a su dueño demuestra honestidad y justicia.</div>'+
+'<h3>Datos interesantes</h3><ul><li>Desarrolla esta teoría en la obra <i>Ética a Nicómaco</i>.</li><li>Conocer el bien no garantiza actuar bien: hacen falta hábitos y práctica.</li><li>La prudencia permite evaluar las circunstancias concretas antes de decidir.</li></ul>',
+q:'“No nos convertimos en personas virtuosas solo por conocer el bien, sino también por practicarlo diariamente.”'},
+{e:'🌿',nav:'Parte 3',k:'Parte 3 · Integrante 3',t:'La ética de la felicidad o eudaimonía',b:
+'<h3>1. ¿Qué significa eudaimonía?</h3><p>Palabra griega que suele traducirse como felicidad, bienestar o florecimiento humano. Es el fin último de la vida. No significa estar alegres todo el tiempo ni vivir placeres pasajeros: consiste en desarrollar nuestras capacidades y vivir de manera plena, guiados por la razón y las virtudes.</p>'+
+'<h3>2. ¿Cómo alcanzarla?</h3><ul><li><b>Actuar virtuosamente:</b> justicia, honestidad, valentía y otras virtudes.</li><li><b>Utilizar la razón:</b> pensar antes de actuar y evaluar las consecuencias.</li><li><b>Desarrollar capacidades:</b> aprender y cultivar habilidades.</li><li><b>Construir buenas relaciones:</b> la amistad y la convivencia son importantes.</li><li><b>Mantener una vida activa:</b> realizar acciones valiosas, no solo desear cosas buenas.</li></ul>'+
+'<h3>3. Placer y felicidad</h3><p>El placer puede formar parte de una vida feliz, pero no basta para definirla. Jugar, comer algo delicioso o ver una película produce alegría; una vida plena también incluye aprender, cumplir responsabilidades, cultivar amistades y actuar correctamente.</p><div class="ej"><b>Ejemplo cotidiano:</b> una estudiante se prepara para una exposición, organiza su tiempo, aprende y cumple. Al alcanzar su meta siente satisfacción por desarrollar sus capacidades y esforzarse.</div>'+
+'<h3>Datos interesantes</h3><ul><li>La <i>Ética a Nicómaco</i> comienza investigando cuál es el bien supremo al que aspiran las acciones humanas.</li><li>La felicidad se desarrolla a lo largo de una vida, no en un único momento de alegría.</li><li>La amistad, la salud y ciertos recursos materiales también influyen en el bienestar.</li></ul>',
+q:'“Ser feliz no significa solamente sentirse bien, sino aprender, actuar virtuosamente y construir una vida que tenga sentido.”'},
+{e:'⚖️',nav:'Parte 4',k:'Parte 4 · Integrante 4',t:'El justo medio y la toma de decisiones',b:
+'<h3>1. ¿Qué es el justo medio?</h3><p>Idea central de la ética aristotélica: muchas virtudes se encuentran entre dos extremos, uno por exceso y otro por defecto. Debemos actuar de manera adecuada según las circunstancias, con razón y prudencia. No significa elegir siempre la mitad ni permanecer neutral, sino buscar la respuesta apropiada para cada situación.</p>'+
+'<h3>2. Ejemplos</h3><table><tr><th>Defecto</th><th>Virtud (término medio)</th><th>Exceso</th></tr><tr><td>Cobardía</td><td class="m">Valentía</td><td>Temeridad</td></tr><tr><td>No considerar las necesidades ajenas</td><td class="m">Generosidad adecuada</td><td>Dar sin considerar las circunstancias</td></tr><tr><td>No expresar lo que sentimos</td><td class="m">Expresar las emociones con prudencia</td><td>Reaccionar con ira descontrolada</td></tr></table>'+
+'<h3>3. ¿Cómo ayuda a decidir?</h3><ul><li><b>Identificar el problema:</b> comprender qué está ocurriendo.</li><li><b>Analizar las opciones:</b> posibles acciones y consecuencias.</li><li><b>Evitar los extremos:</b> reconocer si actuamos por miedo, impulso o exceso.</li><li><b>Usar la prudencia:</b> considerar qué respuesta es apropiada.</li><li><b>Actuar responsablemente:</b> elegir con reflexión y asumir las consecuencias.</li></ul><p><i>Estos pasos son una aplicación práctica de sus ideas, no una lista literal formulada por Aristóteles.</i></p>'+
+'<h3>4. Ejemplo estudiantil</h3><div class="ej">Si una compañera se equivoca durante una exposición, una respuesta poco adecuada sería ignorarla por indiferencia; otra, interrumpirla y corregirla de forma humillante. La respuesta prudente: escucharla, respetarla y ayudarla amablemente cuando sea oportuno.</div>'+
+'<h3>5. Importancia actual</h3><ul><li>Ayuda a reflexionar sobre decisiones en los estudios, la familia y las amistades.</li><li>En la formación docente, permite pensar cómo corregir sin humillar y mantener la disciplina con respeto.</li><li>No todas las acciones tienen un punto medio virtuoso: no hay equilibrio entre hacer lo correcto y cometer una injusticia.</li></ul>',
+q:''},
+{e:'🦉',nav:'Conclusión',k:'Conclusión general',t:'Vivir bien con razón y virtud',b:
+'<p>Aristóteles enseña que vivir bien requiere conocer la realidad, desarrollar virtudes, utilizar la razón y buscar la felicidad mediante nuestras acciones.</p><p>El justo medio nos recuerda que las buenas decisiones exigen prudencia y atención a las circunstancias. Sus ideas siguen siendo útiles para reflexionar sobre nuestro comportamiento y construir una convivencia más justa y respetuosa.</p>'+
+'',
+q:'“La verdadera felicidad no consiste solamente en tener lo que deseamos, sino en aprender a vivir bien, actuar con virtud y tomar decisiones guiadas por la razón.”'}
+];
+
+/* ========= ESCENA ========= */
+var canvas=document.getElementById('c'),R=Math.random;
+var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);
+var scene=new THREE.Scene();scene.background=new THREE.Color(0x03040c);
+var camera=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,1000);
+function dot(){var c=document.createElement('canvas');c.width=c.height=64;var g=c.getContext('2d'),gr=g.createRadialGradient(32,32,0,32,32,32);
+gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(.35,'rgba(255,255,255,.6)');gr.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,64,64);return new THREE.CanvasTexture(c)}
+var DOT=dot();
+function pts(pos,col,size,op){var geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(pos,3));geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+return new THREE.Points(geo,new THREE.PointsMaterial({size:size,map:DOT,vertexColors:true,transparent:true,opacity:op||1,depthWrite:false,blending:THREE.AdditiveBlending}))}
+var i,N=2500,sp=new Float32Array(N*3),sc=new Float32Array(N*3);
+for(i=0;i<N;i++){var r=120+R()*200,t=R()*6.283,p=Math.acos(2*R()-1),b=.4+R()*.6;
+sp[i*3]=r*Math.sin(p)*Math.cos(t);sp[i*3+1]=r*Math.cos(p);sp[i*3+2]=r*Math.sin(p)*Math.sin(t);sc[i*3]=b;sc[i*3+1]=b*.9;sc[i*3+2]=b}
+scene.add(pts(sp,sc,1.3,.9));
+
+/* galaxia dorada y azul */
+var galaxy=new THREE.Group();scene.add(galaxy);
+var G=42000,gp=new Float32Array(G*3),gc=new Float32Array(G*3),cIn=new THREE.Color(0xfff1c9),cMid=new THREE.Color(0xe8a93a),cOut=new THREE.Color(0x2a3f9a),tm=new THREE.Color();
+for(i=0;i<G;i++){var rr=Math.pow(R(),1.5)*40+.9,ang=rr*.34+(i%3)*2.0944,s2=rr*.09*(R()+R()+R()-1.5)*2.2;
+gp[i*3]=Math.cos(ang)*rr+s2*(R()-.5)*4;gp[i*3+2]=Math.sin(ang)*rr+s2*(R()-.5)*4;gp[i*3+1]=(R()-.5)*.8*(1-rr/46);
+var k=rr/40;if(k<.35)tm.copy(cIn).lerp(cMid,k/.35);else tm.copy(cMid).lerp(cOut,(k-.35)/.65);
+var br=.55+R()*.6;gc[i*3]=tm.r*br;gc[i*3+1]=tm.g*br;gc[i*3+2]=tm.b*br}
+var gal=pts(gp,gc,.17,.95);galaxy.add(gal);
+var hole=new THREE.Mesh(new THREE.SphereGeometry(1.15,32,32),new THREE.MeshBasicMaterial({color:0}));scene.add(hole);
+var ring=new THREE.Mesh(new THREE.RingGeometry(1.2,1.75,64),new THREE.MeshBasicMaterial({color:0xfff0c8,transparent:true,opacity:.9,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));ring.rotation.x=-Math.PI/2;scene.add(ring);
+var glow=new THREE.Sprite(new THREE.SpriteMaterial({map:DOT,color:0xe8a93a,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(glow);
+
+/* esfera armilar: el cosmos / la realidad */
+var orb=new THREE.Group();orb.position.y=10;scene.add(orb);
+function shell(n,rad,jit,c1,c2,size){var pa=new Float32Array(n*3),ca=new Float32Array(n*3),cc=new THREE.Color();
+for(var j=0;j<n;j++){var th=R()*6.283,ph=Math.acos(2*R()-1),rd=rad+(R()-.5)*jit;
+pa[j*3]=rd*Math.sin(ph)*Math.cos(th);pa[j*3+1]=rd*Math.cos(ph);pa[j*3+2]=rd*Math.sin(ph)*Math.sin(th);cc.copy(c1).lerp(c2,R());ca[j*3]=cc.r;ca[j*3+1]=cc.g;ca[j*3+2]=cc.b}
+return pts(pa,ca,size,1)}
+orb.add(shell(6000,4.2,.25,new THREE.Color(0xffd36e),new THREE.Color(0xfff3cf),.2));
+orb.add(shell(3000,2.6,2,new THREE.Color(0x5a78ff),new THREE.Color(0xc9a24a),.16));
+function band(rad,tilt){var n=1800,pa=new Float32Array(n*3),ca=new Float32Array(n*3);
+for(var j=0;j<n;j++){var a=R()*6.283;pa[j*3]=Math.cos(a)*rad+(R()-.5)*.15;pa[j*3+1]=(R()-.5)*.15;pa[j*3+2]=Math.sin(a)*rad+(R()-.5)*.15;ca[j*3]=1;ca[j*3+1]=.82;ca[j*3+2]=.45}
+var m=pts(pa,ca,.15,.95);m.rotation.set(tilt[0],0,tilt[1]);return m}
+var b1=band(6.4,[.5,.3]),b2=band(7.6,[-.6,-.4]);orb.add(b1);orb.add(b2);
+
+/* haz */
+var BN=600,bp=new Float32Array(BN*3),bc=new Float32Array(BN*3),bs=[];
+for(i=0;i<BN;i++){bs.push({a:R()*6.283,r:R()*.5,y:R()*7,v:.03+R()*.05});bc[i*3]=1;bc[i*3+1]=.85;bc[i*3+2]=.5}
+var beam=pts(bp,bc,.22,.9);scene.add(beam);
+
+/* conceptos orbitando */
+function labelTex(tx){var c=document.createElement('canvas');c.width=1024;c.height=128;var g=c.getContext('2d');
+g.font="bold 66px 'Courier New',monospace";g.textAlign='center';g.textBaseline='middle';g.shadowColor='#e8a93a';g.shadowBlur=22;g.fillStyle='#ffe3a1';g.fillText(tx,512,64);g.fillText(tx,512,64);return new THREE.CanvasTexture(c)}
+var words=['ARISTÓTELES','REALISMO','JUSTICIA','VALENTÍA','GENEROSIDAD','TEMPLANZA','SABIDURÍA','PRUDENCIA','COMPRENSIÓN','EUDAIMONÍA','JUSTO MEDIO','ÉTICA A NICÓMACO','EL LICEO','VIVIR BIEN'];
+var ringG=new THREE.Group();scene.add(ringG);
+for(i=0;i<26;i++){var pv=new THREE.Object3D();pv.rotation.y=i/26*6.283+R()*.1;
+var m=new THREE.Mesh(new THREE.PlaneGeometry(9,1.125),new THREE.MeshBasicMaterial({map:labelTex(words[i%words.length]),transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,opacity:.9}));
+m.position.set(11+(i%3)*7.5+R()*2,.45,0);m.rotation.set(-Math.PI/2,0,Math.PI/2);pv.add(m);ringG.add(pv)}
+
+/* letras griegas flotantes */
+var letters='ΑΒΓΔΕΖΗΘΛΜΞΠΣΦΨΩ',floaters=[];
+function letterTex(ch){var c=document.createElement('canvas');c.width=c.height=128;var g=c.getContext('2d');g.font="bold 88px 'Playfair Display',Georgia,serif";g.textAlign='center';g.textBaseline='middle';g.shadowColor='#e8a93a';g.shadowBlur=24;g.fillStyle='#ffd36e';g.fillText(ch,64,68);return new THREE.CanvasTexture(c)}
+var lt=[];for(i=0;i<letters.length;i++)lt.push(letterTex(letters[i]));
+for(i=0;i<34;i++){var s=new THREE.Sprite(new THREE.SpriteMaterial({map:lt[i%lt.length],transparent:true,depthWrite:false,opacity:.85}));
+var a=R()*6.283,rd=9+R()*28,sz=1+R()*1.5;s.scale.set(sz,sz,1);floaters.push({s:s,a:a,r:rd,y:1+R()*3,sp:.03+R()*.05,ph:R()*6});scene.add(s)}
+
+/* símbolos que abren cada parte */
+function emojiTex(e){var c=document.createElement('canvas');c.width=c.height=128;var g=c.getContext('2d');g.font='84px serif';g.textAlign='center';g.textBaseline='middle';g.shadowColor='#ffcf6b';g.shadowBlur=18;g.fillText(e,64,70);return new THREE.CanvasTexture(c)}
+var clickables=[];
+parts.forEach(function(pt,i){var s=new THREE.Sprite(new THREE.SpriteMaterial({map:emojiTex(pt.e),transparent:true,depthWrite:false}));
+var a=i/parts.length*6.283+.5,rd=14+R()*14;s.userData={i:i,a:a,r:rd,ph:R()*6};scene.add(s);clickables.push(s)});
+
+/* cámara */
+var th=0,ph=1.05,dist=100,tTh=0,tPh=1.05,tDist=34,drag=false,lx=0,ly=0,moved=0,started=false,t0=0,paused=false,cur=0,look=new THREE.Vector3(0,5,0);
+canvas.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;moved=0});
+addEventListener('pointerup',function(e){if(drag&&moved<6&&e.target===canvas)pick(e);drag=false});
+addEventListener('pointermove',function(e){if(!drag){if(started&&e.target===canvas)canvas.style.cursor=hit(e)?'pointer':'default';return}
+var dx=e.clientX-lx,dy=e.clientY-ly;moved+=Math.abs(dx)+Math.abs(dy);tTh-=dx*.006;tPh=Math.min(1.45,Math.max(.35,tPh-dy*.004));lx=e.clientX;ly=e.clientY});
+addEventListener('wheel',function(e){tDist=Math.min(70,Math.max(14,tDist+e.deltaY*.03))},{passive:true});
+var ray=new THREE.Raycaster(),mv=new THREE.Vector2();
+function hit(e){mv.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight)*2+1);ray.setFromCamera(mv,camera);return ray.intersectObjects(clickables)[0]}
+function pick(e){if(!started||paused)return;var h=hit(e);if(h)openP(h.object.userData.i)}
+
+/* tarjetas */
+var modal=document.getElementById('modal');
+function openP(i){cur=i;var p=parts[i];paused=true;
+document.getElementById('mA').textContent=p.e;document.getElementById('mK').textContent=p.k;document.getElementById('mT').textContent=p.t;
+document.getElementById('mB').innerHTML=p.b+(p.q?'<div class="q">'+p.q+'</div>':'');document.getElementById('mB').scrollTop=0;
+document.getElementById('prev').disabled=i===0;document.getElementById('next').disabled=i===parts.length-1;modal.classList.add('on')}
+function closeP(){modal.classList.remove('on');paused=false}
+document.getElementById('close').onclick=closeP;
+document.getElementById('prev').onclick=function(){if(cur>0)openP(cur-1)};
+document.getElementById('next').onclick=function(){if(cur<parts.length-1)openP(cur+1)};
+modal.addEventListener('pointerdown',function(e){e.stopPropagation()});
+addEventListener('keydown',function(e){if(!started)return;
+if(e.key==='Escape')closeP();
+else if(e.key==='ArrowRight'){modal.classList.contains('on')?cur<parts.length-1&&openP(cur+1):openP(0)}
+else if(e.key==='ArrowLeft'&&modal.classList.contains('on')&&cur>0)openP(cur-1)});
+var nav=document.getElementById('nav');
+parts.forEach(function(p,i){var bt=document.createElement('button');bt.textContent=p.e+' '+p.nav;bt.onclick=function(){openP(i)};nav.appendChild(bt)});
+
+document.getElementById('enter').onclick=function(){document.getElementById('intro').classList.add('out');started=true;t0=performance.now();
+document.getElementById('nav').classList.add('on');document.getElementById('hint').classList.add('on')};
+addEventListener('resize',function(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+
+var clock=new THREE.Clock();
+function ease(x){return 1-Math.pow(1-x,3)}
+function loop(){requestAnimationFrame(loop);
+var dt=clock.getDelta(),t=clock.elapsedTime,k=started?ease(Math.min(1,(performance.now()-t0)/3800)):0,s2=.02+.98*k;
+galaxy.scale.setScalar(s2);ringG.scale.setScalar(s2);hole.scale.setScalar(s2);ring.scale.setScalar(s2);glow.scale.set(14*s2,14*s2,1);beam.visible=k>.5;
+if(started&&!drag&&!paused)tTh+=dt*.08;
+th+=(tTh-th)*.06;ph+=(tPh-ph)*.06;dist+=(tDist+(1-k)*70-dist)*.05;
+camera.position.set(look.x+dist*Math.sin(ph)*Math.sin(th),look.y+dist*Math.cos(ph),look.z+dist*Math.sin(ph)*Math.cos(th));camera.lookAt(look);
+gal.rotation.y=t*.05;ringG.rotation.y=-t*.045;ring.rotation.z=t*.4;
+orb.scale.setScalar(k*(1+Math.sin(t*2)*.03));orb.rotation.y=t*.35;b1.rotation.y=t*.5;b2.rotation.y=-t*.4;orb.position.y=10+Math.sin(t*1.2)*.4;
+glow.material.opacity=.7+Math.sin(t*2)*.15;
+var bpA=beam.geometry.attributes.position.array;
+for(var i=0;i<BN;i++){var b=bs[i];b.y+=b.v;if(b.y>7)b.y=0;var w=.3+b.y*.05;bpA[i*3]=Math.cos(b.a+t)*b.r*w*3;bpA[i*3+1]=1+b.y;bpA[i*3+2]=Math.sin(b.a+t)*b.r*w*3}
+beam.geometry.attributes.position.needsUpdate=true;
+floaters.forEach(function(f){f.a+=f.sp*dt;f.s.position.set(Math.cos(f.a)*f.r*s2,f.y+Math.sin(t*1.5+f.ph)*.6+k,Math.sin(f.a)*f.r*s2)});
+clickables.forEach(function(s){var u=s.userData;u.a+=.02*dt;s.position.set(Math.cos(u.a)*u.r*s2,2.4+Math.sin(t*1.3+u.ph)*.7,Math.sin(u.a)*u.r*s2);s.scale.setScalar(3.6*(.6+.4*k)*(1+Math.sin(t*3+u.ph)*.05))});
+renderer.render(scene,camera)}
+loop();
+})();
+</script>
+</body>
+</html>
